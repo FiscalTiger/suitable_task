@@ -9,6 +9,12 @@ angular.module('suitableTask.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
-
+.controller('View2Ctrl', ['$scope', 'UserService', function($scope, user) {
+    $scope.firstName = user.getFirstName();
+    $scope.lastName = user.getLastName();
+    $scope.pictureUrl = user.getPictureUrl();
+    $scope.connections =  user.getConnections();
+    $scope.userEmail = user.getUserEmail();
+    $scope.summary = user.getUserSummary();
+    $scope.position = user.getPosition();
 }]);
