@@ -5,7 +5,8 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-12 lead">User profile</div>
+            <div class="col-md-8 lead">{{firstName}}'s profile</div>
+            <div class="col-md-4"><button ng-click="lLogOut()" class="btn btn-default pull-right">Log Out</button></div>
             <hr>
           </div>
           <div class="row">
@@ -35,10 +36,20 @@
           <div class="row">
             <hr>
             <div class="col-md-8"> Summary: <br /> {{summary}} </div>
-            <div class="col-md-4">
-              <button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
-            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+              <div class="col-md-8 lead">{{firstName}}'s Feed</div>
+              <div class="col-md-4"><button ng-click="createFormForPost()" class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i>Post</button></div>
+              <hr>
+            </div>
         </div>
       </div>
     </div>

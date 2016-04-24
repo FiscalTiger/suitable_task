@@ -9,21 +9,33 @@ angular.module('suitableTask.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', ['$rootScope', '$scope', '$location', 'UserService',function($rootScope, $scope, $location, user) {
+.controller('View1Ctrl', ['$scope', '$location', 'UserService', 'LinkedInService', function($scope, $location, user, linkedin) {
     //Controller handes the Linkedin Authorization
+    $scope.error = false;
+
     $scope.liAuth = function() {
-        IN.User.authorize(function(){
-            IN.API.Profile("me").fields('first-name', 'last-name', 'headline', 'num-connections', 'summary', 'picture-url', 'email-address', 'positions').result(showProfileInfo);
-        });
+        linkedin.authorizeUser(makeGetProfileApiCall);
     };
+
+    function makeGetProfileApiCall() {
+        var fields = ['first-name', 'last-name',
+            'headline', 'num-connections', 'summary', 'picture-url',
+            'email-address', 'positions'];
+        linkedin.getProfileData(showProfileInfo, showErrorMessage, fields);
+    }
 
     function showProfileInfo(profiles) {
         var member = profiles.values[0];
+
         user.setUser(member);
         console.log(user.getUser());
 
         // Reroute to view2.html
         $location.path('/view2');
         $scope.$apply();
+    }
+
+    function showErrorMessage() {
+        $scope.error = true;
     }
 }]);

@@ -9,7 +9,7 @@ angular.module('suitableTask.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', ['$scope', 'UserService', function($scope, user) {
+.controller('View2Ctrl', ['$scope', '$location', 'UserService', 'LinkedInService', function($scope, $location, user, linkedin) {
     $scope.firstName = user.getFirstName();
     $scope.lastName = user.getLastName();
     $scope.pictureUrl = user.getPictureUrl();
@@ -17,4 +17,14 @@ angular.module('suitableTask.view2', ['ngRoute'])
     $scope.userEmail = user.getUserEmail();
     $scope.summary = user.getUserSummary();
     $scope.position = user.getPosition();
+
+    $scope.lLogOut = function() {
+        linkedin.logOutUser(endSession);
+    };
+
+    function endSession() {
+        // Reroute to view2.html
+        $location.path('/view1');
+        $scope.$apply();
+    }
 }]);
