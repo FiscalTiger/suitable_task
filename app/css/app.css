@@ -139,3 +139,24 @@ a.linkedin:hover {
 a.linkedin:active {
     background: url(../img/Sign-in-Large---Active.png) no-repeat;
 }
+
+@-webkit-keyframes myChange {
+  from {
+      height: 0px;
+  } to {
+      height: 582.4px;
+  }
+}
+
+@keyframes myChange {
+  from {
+      height: 0px;
+  } to {
+      height: 582.4px;
+  }
+}
+
+div.ng-show {
+  -webkit-animation: slide 1s forwards myChange;
+  animation: slide 1s forwards myChange;
+}

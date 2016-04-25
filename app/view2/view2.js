@@ -17,10 +17,15 @@ angular.module('suitableTask.view2', ['ngRoute'])
     $scope.userEmail = user.getUserEmail();
     $scope.summary = user.getUserSummary();
     $scope.position = user.getPosition();
+    $scope.createForm = false;
 
     $scope.lLogOut = function() {
         linkedin.logOutUser(endSession);
     };
+
+    $scope.createFormForPost =  function() {
+        $scope.createForm = true;
+    }
 
     function endSession() {
         // Reroute to view2.html

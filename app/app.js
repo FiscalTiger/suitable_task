@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('suitableTask', [
   'ngRoute',
+  'ngAnimate',
   'suitableTask.view1',
   'suitableTask.view2',
   'suitableTask.version'

@@ -25,11 +25,11 @@
             }
         }
 
-        this.authorizeUser = function(successCallback) {
-            IN.User.authorize(successCallback);
+        this.authorizeUser = function(callback) {
+            IN.User.authorize(callback);
         }
 
-        this.logOutUser = function(successCallback, failureCallback) {
+        this.logOutUser = function(callback) {
             IN.User.logout(callback);
         }
 
