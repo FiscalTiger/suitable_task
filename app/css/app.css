@@ -47,11 +47,8 @@ img.avatar {
   float: left;
 }
 
-/*
-Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort=views&timeframe=ever&offset=461
-*/
 body {
-    background: url(http://habrastorage.org/files/c9c/191/f22/c9c191f226c643eabcce6debfe76049d.jpg);
+    background: url(../img/background.png);
 }
 
 .jumbotron {
@@ -140,23 +137,17 @@ a.linkedin:active {
     background: url(../img/Sign-in-Large---Active.png) no-repeat;
 }
 
-@-webkit-keyframes myChange {
-  from {
-      height: 0px;
-  } to {
-      height: 582.4px;
-  }
+
+div.form-containter {
+    height: 620px;
+    overflow: hidden;
+    -webkit-transition:all ease-out 0.3s;
+    -moz-transition:all ease-out 0.3s;
+    -ms-transition:all ease-out 0.3s;
+    -o-transition:all ease-out 0.3s;
+    transition:all ease-out 0.3s;
 }
 
-@keyframes myChange {
-  from {
-      height: 0px;
-  } to {
-      height: 582.4px;
-  }
-}
-
-div.ng-show {
-  -webkit-animation: slide 1s forwards myChange;
-  animation: slide 1s forwards myChange;
+.form-containter.ng-hide {
+    height: 0;
 }

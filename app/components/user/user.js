@@ -9,18 +9,23 @@
         .module('suitableTask')
         .service('UserService', UserService);
 
-    UserService.$inject = ['$rootScope'];
-    function UserService($rootScope) {
+    UserService.$inject = ["$window"];
+    function UserService($window) {
 
-        var user;
+        var user = angular.fromJson($window.sessionStorage.getItem("user")) || {};
 
         this.setUser = function(member) {
             user = member;
-            $rootScope.$broadcast( 'user.set' );
+            sessionStorage.setItem('user', JSON.stringify(user));
         }
 
         this.getUser = function() {
             return user;
+        }
+
+        this.removeUser = function() {
+            $window.sessionStorage.clear();
+            user = {};
         }
 
         this.getFirstName = function() {

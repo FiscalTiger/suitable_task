@@ -9,8 +9,7 @@
         .module('suitableTask')
         .service('LinkedInService', LinkedInService);
 
-    LinkedInService.$inject = ['$rootScope'];
-    function LinkedInService($rootScope) {
+    function LinkedInService() {
 
         this.getProfileData = function(successCallback, failureCallback, fields) {
             if(typeof fields === 'undefined') {

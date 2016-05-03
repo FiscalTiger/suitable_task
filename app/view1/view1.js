@@ -12,7 +12,6 @@ angular.module('suitableTask.view1', ['ngRoute'])
 .controller('View1Ctrl', ['$scope', '$location', 'UserService', 'LinkedInService', function($scope, $location, user, linkedin) {
     //Controller handes the Linkedin Authorization
     $scope.error = false;
-
     $scope.liAuth = function() {
         linkedin.authorizeUser(makeGetProfileApiCall);
     };
