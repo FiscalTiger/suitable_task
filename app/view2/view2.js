@@ -9,9 +9,10 @@ angular.module('suitableTask.view2', ['ngRoute', 'ngAnimate'])
   });
 }])
 
-.controller('View2Ctrl', ['$scope', '$location', '$window', 'UserService', 'LinkedInService', function($scope, $location, $window, user, linkedin) {
+.controller('View2Ctrl', ['$scope', '$location', '$window', 'UserService', 'LinkedInService', 'PostService', function($scope, $location, $window, user, linkedin, posts) {
     $scope.createForm = false;
 
+    // User is set then we should load the profile
     if($window.sessionStorage.getItem("user")) {
         $scope.firstName = user.getFirstName();
         $scope.lastName = user.getLastName();
@@ -20,17 +21,37 @@ angular.module('suitableTask.view2', ['ngRoute', 'ngAnimate'])
         $scope.userEmail = user.getUserEmail();
         $scope.summary = user.getUserSummary();
         $scope.position = user.getPosition();
+        $scope.posts = posts.getPosts($scope.userEmail);
     } else {
         // Reroute to view1.html
         $location.path('/view1');
     }
 
+    // Log out handler
     $scope.lLogOut = function() {
         linkedin.logOutUser(endSession);
     };
 
+    // Animation for the post form
     $scope.createFormForPost =  function() {
         $scope.createForm = true;
+    };
+
+    $scope.submitPost = function() {
+        $scope.post.date = new Date();
+        if($scope.post) {
+            posts.addPost($scope.userEmail, $scope.post);
+            $scope.posts = posts.getPosts($scope.userEmail);
+        }
+        $scope.post = {};
+        $scope.postForm.$setPristine();
+        $scope.createForm = false;
+    };
+
+    $scope.cancelPost = function() {
+        $scope.post = {};
+        $scope.postForm.$setPristine();
+        $scope.createForm = false;
     };
 
     function endSession() {

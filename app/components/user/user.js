@@ -1,5 +1,6 @@
 /*
     Service to pass user's information between views
+    Used sessionStorage to store information during refresh (workaround)
 */
 
 (function () {
@@ -16,7 +17,7 @@
 
         this.setUser = function(member) {
             user = member;
-            sessionStorage.setItem('user', JSON.stringify(user));
+            $window.sessionStorage.setItem('user', JSON.stringify(user));
         }
 
         this.getUser = function() {
