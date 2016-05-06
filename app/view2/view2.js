@@ -11,7 +11,7 @@ angular.module('suitableTask.view2', ['ngRoute', 'ngAnimate'])
 
 .controller('View2Ctrl', ['$scope', '$location', '$window', 'UserService', 'LinkedInService', 'PostService', function($scope, $location, $window, user, linkedin, posts) {
     $scope.createForm = false;
-    $scope.postError = true;
+    $scope.postError = false;
 
     if(!$window.localStorage.getItem("id")) {
         $window.localStorage.setItem("id", "0");
